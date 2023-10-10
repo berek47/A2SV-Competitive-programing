@@ -1,15 +1,10 @@
-def maxCoins( piles):
-    piles.sort()
-    itvalue = len(piles)//3
-    ptr = -2
-    counter = 0
-
-    while itvalue:
-        counter += piles[ptr]
-        ptr -= 2
-        itvalue -=1
-    
-    return counter
-
-piles = [2,0,2,1,1,0]
-print(maxCoins(piles))
+class Solution:
+    def maxCoins(self, piles: List[int]) -> int:
+        piles.sort(reverse = True)
+        a = len(piles) // 3
+        b = 0
+        c = 1
+        for i in range(a):
+            b += piles[c]
+            c += 2
+        return b
