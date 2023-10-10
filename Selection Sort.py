@@ -1,15 +1,20 @@
-def maxCoins( piles):
-    piles.sort()
-    itvalue = len(piles)//3
-    ptr = -2
-    counter = 0
+class Solution:
+    def select(self, arr, i):
+        # code here
+        min = i
+        j=i
+        for j in range(i, len(arr)):
+            if arr[j] < arr[min]:
+                min = j
 
-    while itvalue:
-        counter += piles[ptr]
-        ptr -= 2
-        itvalue -=1
-    
-    return counter
+        return min
 
-piles = [2,0,2,1,1,0]
-print(maxCoins(piles))
+    def selectionSort(self, arr, n):
+        # code here
+        i = 0
+        while i < len(arr):
+            min = self.select(arr, i)
+
+            arr[min], arr[i] = arr[i], arr[min]
+            i += 1
+        return arr
